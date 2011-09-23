@@ -1,6 +1,3 @@
-Relayer
-=======
-
 [Relayer](http://github.com/brianewing/relayer) is a dead simple, high-performance, event-driven IRC library written in Ruby.
 -----------------------------------------------------------------------------------------------------------------------------
 
