@@ -83,7 +83,7 @@ module Relayer
     end
     
     def start
-      @socket = IRCSocket.new(self, @hostname, @port)
+      @socket = IRCSocket.new(self, @hostname, @port, @ssl)
       register
     end
     

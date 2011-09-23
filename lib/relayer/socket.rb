@@ -1,15 +1,18 @@
 require "socket"
+require "openssl"
 
 module Relayer
   class IRCSocket
-    def initialize(client, host, port)
+    def initialize(client, host, port, ssl = false)
       @client = client
-      @socket = TCPSocket.open(host, port)
+      @socket = TCPSocket.new(host, port)
+
+      if ssl
+        @socket = OpenSSL::SSL::SSLSocket.new(@socket)
+        @socket.sync_close = true # close both wrapper and irc socket on close
+        @socket.connect
+      end
       
-      register_selector
-    end
-    
-    def register_selector
       IRCSocketSelector.add_irc_socket(@socket, @client)
     end
     
