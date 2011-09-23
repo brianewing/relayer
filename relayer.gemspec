@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = Relayer::VERSION
   s.authors     = ["Brian Ewing"]
   s.email       = ["me@brianewing.co.uk"]
-  s.homepage    = ""
+  s.homepage    = "http://brianewing.me/pages/relayer"
   s.summary     = "Dead simple, high-performance, event-driven IRC library"
-  s.description = ""
+  s.description = "Relayer is a dead simple, high-performance, event-driven IRC library"
 
   s.rubyforge_project = "relayer"
 
