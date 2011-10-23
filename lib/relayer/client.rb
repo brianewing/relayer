@@ -32,6 +32,8 @@ module Relayer
       
       @protocol = IRCProtocol.new(self)
       @events = IRCEvents.new(@protocol, self)
+
+      @mutex = Mutex.new
       
       default_handlers!
     end
@@ -92,7 +94,9 @@ module Relayer
     end
     
     def writable
-      @socket.write
+      @mutex.synchronize do
+        @socket.write
+      end
     end
     
     def process_raw(line)
@@ -100,7 +104,9 @@ module Relayer
     end
     
     def send_raw(line)
-      @socket.send line
+      @mutex.synchronize do
+        @socket.send line
+      end
     end
     
     def user(hostmask)
